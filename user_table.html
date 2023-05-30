@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>User List</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 8px;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.4);
+    }
+
+    .modal-content {
+      background-color: #fefefe;
+      margin: 15% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+    }
+
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h2>User List</h2>
+  <table>
+    <tr>
+      <th>SR No.</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Username</th>
+      <th>More info</th>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>Kajal</td>
+      <td>Kumari</td>
+      <td>@kajaljha_</td>
+      <td><button onclick="openModal('Kajal Kumari', '123', 'Admin', 'Admin User', '2023-05-29 10:30 AM', '7992354927', 'jha.kajal2315gmail.com')">>>></button></td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Surynahsu</td>
+      <td>Sharma</td>
+      <td>@ksuryanshu_11</td>
+      <td><button onclick="openModal('Suryanshu Sharma', '456', 'User', 'Admin User', '2023-05-28 03:45 PM', '9876543210', 'suryanshu@gmail.com')">>>></button></td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Alla</td>
+      <td>Aditi</td>
+      <td>@raoAditi</td>
+      <td><button onclick="openModal('Alla Aditi', '232', 'Admin', 'Admin User', '2023-05-30 06:45 PM', '63287387987', 'aditi@gmail.com')">>>></button></td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Aliva</td>
+      <td>Mishra</td>
+      <td>@aliva123</td>
+      <td><button onclick="openModal('ALiva Mishra', '786', 'User', 'Admin User', '2023-05-22 12:30 PM', '4366648787', 'aliva@gmail.com')">>>></button></td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Sangwi</td>
+      <td>Sharma</td>
+      <td>@ksangwi</td>
+      <td><button onclick="openModal('Sangwi Sharma', '985', 'User', 'Admin User', '2023-12-31 11:45 PM', '9876244550', 'sangwi@gmail.com')">>>></button></td>
+    </tr>
+  </table>
+
+  <div id="myModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h3>User Details</h3>
+      <p><strong>User Name:</strong> <span id="modal-username"></span></p>
+      <p><strong>User ID:</strong> <span id="modal-userid"></span></p>
+      <p><strong>User Type:</strong> <span id="modal-usertype"></span></p>
+      <p><strong>Created By:</strong> <span id="modal-createdby"></span></p>
+      <p><strong>Last Accessed Time:</strong> <span id="modal-lastaccessed"></span></p>
+      <p><strong>Contact No:</strong> <span id="modal-contactno"></span></p>
+      <p><strong>Email ID:</strong> <span id="modal-email"></span></p>
+    </div>
+  </div>
+
+  <script>
+    function openModal(username, userid, usertype, createdby, lastaccessed, contactno, email) {
+      document.getElementById("modal-username").textContent = username;
+      document.getElementById("modal-userid").textContent = userid;
+      document.getElementById("modal-usertype").textContent = usertype;
+      document.getElementById("modal-createdby").textContent = createdby;
+      document.getElementById("modal-lastaccessed").textContent = lastaccessed;
+      document.getElementById("modal-contactno").textContent = contactno;
+      document.getElementById("modal-email").textContent = email;
+
+      document.getElementById("myModal").style.display = "block";
+    }
+
+    function closeModal() {
+      document.getElementById("myModal").style.display = "none";
+    }
+  </script>
+</body>
+</html>
