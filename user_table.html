@@ -6,17 +6,18 @@
     table {
       border-collapse: collapse;
       width: 100%;
+      overflow-x: scroll;
     }
-
+    
     th, td {
       text-align: left;
-      padding: 8px;
+      padding: 10px;
     }
-
+    
     tr:nth-child(even) {
       background-color: #f2f2f2;
     }
-
+    
     .modal {
       display: none;
       position: fixed;
@@ -28,15 +29,15 @@
       overflow: auto;
       background-color: rgba(0, 0, 0, 0.4);
     }
-
+    
     .modal-content {
-      background-color: #fefefe;
+      background-color: #ebcccc;
       margin: 15% auto;
       padding: 20px;
       border: 1px solid #888;
       width: 80%;
     }
-
+    
     .close {
       color: #aaa;
       float: right;
@@ -44,62 +45,141 @@
       font-weight: bold;
       cursor: pointer;
     }
-
+    
     .close:hover,
     .close:focus {
       color: black;
       text-decoration: none;
       cursor: pointer;
     }
+    .table-container {
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .table-wrapper {
+      overflow-x: auto;
+      scroll-behavior: smooth;
+    }
+    /*scroll css*/
+    
+    .scroll-button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 40px;
+      height: 40px;
+      background-color: #ccc;
+      color: #000;
+      font-size: 20px;
+      text-align: center;
+      cursor: pointer;
+    }
+    
+    .scroll-button.left {
+      left: 0;
+    }
+    
+    .scroll-button.right {
+      right: 0;
+    }
+    
   </style>
 </head>
 <body>
+  <div class="table-container">
+    <div class="scroll-button left">&#8249;</div>
+    <div class="table-wrapper">
   <h2>User List</h2>
   <table>
     <tr>
       <th>SR No.</th>
       <th>First Name</th>
       <th>Last Name</th>
+      <th>Gender</th>
+      <th>DOJ</th>
       <th>Username</th>
+      <th>User ID</th>
+      <th>User state</th>
+      <th>User city</th>
+      <th>User country</th>
+      <th>User Organisation</th>
       <th>More info</th>
     </tr>
     <tr>
       <td>1</td>
       <td>Kajal</td>
       <td>Kumari</td>
+      <td>F</td>
+      <td>May 2023</td>
       <td>@kajaljha_</td>
+      <td>88</td>     
+      <td>Bihar</td>
+      <td>Purnia</td>
+      <td>India</td>
+      <td>Knowledge lens</td>
       <td><button onclick="openModal('Kajal Kumari', '123', 'Admin', 'Admin User', '2023-05-29 10:30 AM', '7992354927', 'jha.kajal2315gmail.com')">>>></button></td>
     </tr>
     <tr>
       <td>2</td>
-      <td>Surynahsu</td>
+      <td>Suryanshu</td>
       <td>Sharma</td>
+      <td>M</td>
+      <td>june 2023</td>
       <td>@ksuryanshu_11</td>
+      <td>67</td>
+      <td>Bihar</td>
+      <td>Patna</td>
+      <td>India</td>
+      <td>TCS</td>
       <td><button onclick="openModal('Suryanshu Sharma', '456', 'User', 'Admin User', '2023-05-28 03:45 PM', '9876543210', 'suryanshu@gmail.com')">>>></button></td>
     </tr>
     <tr>
       <td>3</td>
       <td>Alla</td>
       <td>Aditi</td>
-      <td>@raoAditi</td>
+      <td>M</td>
+      <td>june 2023</td>
+      <td>@ksuryanshu_11</td>
+      <td>67</td>
+      <td>Bihar</td>
+      <td>Patna</td>
+      <td>India</td>
+      <td>TCS</td>
       <td><button onclick="openModal('Alla Aditi', '232', 'Admin', 'Admin User', '2023-05-30 06:45 PM', '63287387987', 'aditi@gmail.com')">>>></button></td>
     </tr>
     <tr>
       <td>4</td>
       <td>Aliva</td>
       <td>Mishra</td>
-      <td>@aliva123</td>
+      <td>F</td>
+      <td>May 2023</td>
+      <td>@alivamishra</td>
+      <td>90</td>
+      <td>Odisha</td>
+      <td>Berhampur</td>
+      <td>India</td>
+      <td>Infosys</td>
       <td><button onclick="openModal('ALiva Mishra', '786', 'User', 'Admin User', '2023-05-22 12:30 PM', '4366648787', 'aliva@gmail.com')">>>></button></td>
     </tr>
     <tr>
       <td>5</td>
       <td>Sangwi</td>
       <td>Sharma</td>
-      <td>@ksangwi</td>
+      <td>F</td>
+      <td>aug 2022</td>
+      <td>@ksangwi_09</td>
+      <td>12</td>
+      <td>Bihar</td>
+      <td>Patna</td>
+      <td>India</td>
+      <td>Delloite</td>
       <td><button onclick="openModal('Sangwi Sharma', '985', 'User', 'Admin User', '2023-12-31 11:45 PM', '9876244550', 'sangwi@gmail.com')">>>></button></td>
     </tr>
   </table>
-
+</div>
+<div class="scroll-button right">&#8250;</div>
+</div>
   <div id="myModal" class="modal">
     <div class="modal-content">
       <span class="close" onclick="closeModal()">&times;</span>
@@ -113,7 +193,7 @@
       <p><strong>Email ID:</strong> <span id="modal-email"></span></p>
     </div>
   </div>
-
+  
   <script>
     function openModal(username, userid, usertype, createdby, lastaccessed, contactno, email) {
       document.getElementById("modal-username").textContent = username;
@@ -123,13 +203,41 @@
       document.getElementById("modal-lastaccessed").textContent = lastaccessed;
       document.getElementById("modal-contactno").textContent = contactno;
       document.getElementById("modal-email").textContent = email;
-
+      
       document.getElementById("myModal").style.display = "block";
     }
-
+    
     function closeModal() {
       document.getElementById("myModal").style.display = "none";
     }
+
+    // Get the table wrapper and scroll buttons
+const tableWrapper = document.querySelector('.table-wrapper');
+const scrollLeftButton = document.querySelector('.scroll-button.left');
+const scrollRightButton = document.querySelector('.scroll-button.right');
+
+// Set the scroll distance in pixels
+const scrollDistance = 100;
+
+// Add event listeners to scroll buttons
+scrollLeftButton.addEventListener('click', scrollLeft);
+scrollRightButton.addEventListener('click', scrollRight);
+
+// Function to scroll the table to the left
+function scrollLeft() {
+  tableWrapper.scrollBy({
+    left: -scrollDistance,
+    behavior: 'smooth'
+  });
+}
+// Function to scroll the table to the right
+function scrollRight() {
+  tableWrapper.scrollBy({
+    left: scrollDistance,
+    behavior: 'smooth'
+  });
+}
+
   </script>
 </body>
 </html>
