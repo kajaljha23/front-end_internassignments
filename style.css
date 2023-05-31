@@ -135,7 +135,11 @@ nav ul {
   .skills-wrapper img {
     padding: 1.25rem;
   }
-  
+  .skills-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+  }
   .icon {
     width: 11.875rem;
     height: 11.25rem;
@@ -149,11 +153,12 @@ nav ul {
   }
   .projects {
     background-color: var(--bg-color);
+    text-align: center;
     padding: 32px 0;
     margin-top: 2rem;
   }
   .contact {
-    margin-top: 2rem;
+    margin-top: 4rem;
   }
   
   .contact h2 {
@@ -171,7 +176,7 @@ nav ul {
   .contact-form-container label {
     line-height: 2.7em;
     font-weight: var(--bold-font);
-    color: var(--primary-color);
+    color: grey;
   }
   
   .contact-form-container textarea {
@@ -191,7 +196,7 @@ nav ul {
   }
   .input-field::placeholder {
     padding: 0.5rem;
-    color: var(--primary-color);
+    color: grey;
   }
   .submit-btn {
     width: 100%;
